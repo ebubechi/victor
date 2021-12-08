@@ -5,14 +5,16 @@ import 'package:myap/widgets/app_bar_title.dart';
 import 'package:myap/widgets/item_list.dart';
 
 class DashboardScreen extends StatefulWidget {
+  const DashboardScreen({Key? key}) : super(key: key);
+
   @override
   _DashboardScreenState createState() => _DashboardScreenState();
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
-  final FocusNode _nameFocusNode = FocusNode();
-  final FocusNode _emailFocusNode = FocusNode();
-  final FocusNode _passwordFocusNode = FocusNode();
+  // final FocusNode _nameFocusNode = FocusNode();
+  // final FocusNode _emailFocusNode = FocusNode();
+  // final FocusNode _passwordFocusNode = FocusNode();
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: CustomColors.firebaseNavy,
-        title: const AppBarTitle(),
+        title: const Text(
+          "LIST OF ITEMS",
+          style: TextStyle(
+              color: CustomColors.firebaseOrange,
+              fontWeight: FontWeight.bold,
+              fontSize: 20),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

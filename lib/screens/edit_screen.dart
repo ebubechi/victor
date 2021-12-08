@@ -46,7 +46,13 @@ class _EditScreenState extends State<EditScreen> {
         appBar: AppBar(
           elevation: 0,
           backgroundColor: CustomColors.firebaseNavy,
-          title: const AppBarTitle(),
+          title: const Text(
+          "EDIT ITEM TO SELL/ADVERTISE",
+          style: TextStyle(
+              color: CustomColors.firebaseOrange,
+              fontWeight: FontWeight.bold,
+              fontSize: 20),
+        ),
           actions: [
             _isDeleting
                 ? const Padding(

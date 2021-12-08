@@ -17,106 +17,107 @@ class ItemList extends StatelessWidget {
         } else if (snapshot.hasData || snapshot.data != null) {
           return Padding(
             padding: const EdgeInsets.all(90.0),
-            child: ListView.separated(
-              separatorBuilder: (context, index) => const SizedBox(height: 16.0),
-              itemCount: snapshot.data!.docs.length,
-              itemBuilder: (context, index) {
-                dynamic noteInfo = snapshot.data!.docs[index].data()!;
-                String docID = snapshot.data!.docs[index].id;
-                String title = noteInfo["title"];
-                String description = noteInfo["description"];
-                String location = noteInfo["location"];
-                String contact = noteInfo["contact"];
+            child: 
+                ListView.separated(
+                  separatorBuilder: (context, index) => const SizedBox(height: 16.0),
+                  itemCount: snapshot.data!.docs.length,
+                  itemBuilder: (context, index) {
+                    dynamic noteInfo = snapshot.data!.docs[index].data()!;
+                    String docID = snapshot.data!.docs[index].id;
+                    String title = noteInfo["title"];
+                    String description = noteInfo["description"];
+                    String location = noteInfo["location"];
+                    String contact = noteInfo["contact"];
 
-                return Ink(
-                    decoration: BoxDecoration(
-                      color: CustomColors.firebaseGrey.withOpacity(0.1),
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                    child: GestureDetector(
-                      onTap: () => Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => EditScreen(
-                            currentTitle: title,
-                            currentDescription: description,
-                            currentLocation: location,
-                            currentContact: contact,
-                            documentId: docID,
-                          ),
+                    return Ink(
+                        decoration: BoxDecoration(
+                          color: CustomColors.firebaseGrey.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(8.0),
                         ),
-                      ),
-                      child: 
-                       Card(
-                          color: CustomColors.firebaseNavy,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0),
+                        child: GestureDetector(
+                          onTap: () => Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => EditScreen(
+                                currentTitle: title,
+                                currentDescription: description,
+                                currentLocation: location,
+                                currentContact: contact,
+                                documentId: docID,
+                              ),
+                            ),
                           ),
                           child: 
-                            Column(
-                              children: [
-                                const SizedBox(
-                                  height: 10.0,
-                                ),
-                                Text(
-                                  title,
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                                const SizedBox(
-                                  height: 20.0,
-                                ),
-                                Text(
-                                  description,
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                                const SizedBox(
-                                  height: 10.0,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      Column(
+                           Card(
+                              color: CustomColors.firebaseNavy,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              child: 
+                                Column(
+                                  children: [
+                                    const SizedBox(
+                                      height: 10.0,
+                                    ),
+                                    Text(
+                                      title,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                    const SizedBox(
+                                      height: 20.0,
+                                    ),
+                                    Text(
+                                      description,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                    const SizedBox(
+                                      height: 10.0,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
                                         children: [
-                                          const Padding(
-                                            padding: EdgeInsets.only(top: 4.0),
-                                            child: Text(
-                                              "Location  ",
-                                              style: TextStyle(fontSize: 8),
-                                            ),
+                                          Column(
+                                            children: [
+                                              const Padding(
+                                                padding: EdgeInsets.only(top: 4.0),
+                                                child: Text(
+                                                  "Location  ",
+                                                  style: TextStyle(fontSize: 8),
+                                                ),
+                                              ),
+                                              Text(
+                                                location,
+                                                maxLines: 1,
+                                                overflow: TextOverflow.ellipsis,
+                                              ),
+                                            ],
                                           ),
-                                          Text(
-                                            location,
-                                            maxLines: 1,
-                                            overflow: TextOverflow.ellipsis,
+                                          Column(
+                                            children: [
+                                              const Padding(padding: EdgeInsets.only(top: 4.0),
+                                              child: Text("Contact  ", 
+                                              style: TextStyle(fontSize: 8),),
+                                              ),
+                                              Text(
+                                                contact,
+                                                maxLines: 2,
+                                                overflow: TextOverflow.fade,
+                                                softWrap: false,
+                                              ),
+                                            ],
                                           ),
                                         ],
                                       ),
-                                      Column(
-                                        children: [
-                                          const Padding(padding: EdgeInsets.only(top: 4.0),
-                                          child: Text("Contact  ", 
-                                          style: TextStyle(fontSize: 8),),
-                                          ),
-                                          Text(
-                                            contact,
-                                            maxLines: 2,
-                                            overflow: TextOverflow.fade,
-                                            softWrap: false,
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
-                )));
-              },
-            ),
+                    )));
+                  },
+                ),
           );
         }
 

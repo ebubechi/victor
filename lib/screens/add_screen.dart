@@ -22,11 +22,17 @@ class AddScreen extends StatelessWidget {
       },
       child: Scaffold(
         backgroundColor: CustomColors.firebaseNavy,
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: CustomColors.firebaseNavy,
-          title: const AppBarTitle(),
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: CustomColors.firebaseNavy,
+        title: const Text(
+          "ADD ITEM TO SELL/ADVERTISE",
+          style: TextStyle(
+              color: CustomColors.firebaseOrange,
+              fontWeight: FontWeight.bold,
+              fontSize: 20),
         ),
+      ),
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.only(
